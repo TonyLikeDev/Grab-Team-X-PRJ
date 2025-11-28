@@ -3,7 +3,7 @@
 import { use } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
-import { MapPin, Clock, Star, ArrowLeft, ChevronRight } from "lucide-react"
+import { MapPin, Clock, Star, ArrowLeft, Home, User } from "lucide-react"
 import { activities } from "@/lib/activities-data"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -23,8 +23,8 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Không tìm thấy hoạt động</h1>
-          <Button onClick={() => router.push("/")}>Quay lại trang chủ</Button>
+          <h1 className="text-2xl font-bold mb-4">Activity not found</h1>
+          <Button onClick={() => router.push("/")}>Back to Home</Button>
         </div>
       </div>
     )
@@ -33,7 +33,7 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
   const handleBookNow = () => {
     setBookingData({
       activityId: activity.id,
-      activityTitle: activity.title,
+      activityTitle: activity.titleEn,
       activityImage: activity.image,
       activityPrice: activity.price,
       date: null,
@@ -43,31 +43,41 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
     router.push(`/booking/${activity.id}`)
   }
 
-  const steps = ["Chọn tour", "Đặt lịch", "Xác nhận", "Thanh toán", "Hoàn tất"]
+  const steps = ["Select Tour", "Schedule", "Confirm", "Payment", "Complete"]
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-accent/5 to-background">
       <StepProgressBar currentStep={1} steps={steps} />
 
       {/* Header */}
-      <header className="bg-primary text-primary-foreground shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center gap-4">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => router.push("/")}
-              className="text-primary-foreground hover:bg-primary-foreground/10"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </Button>
-            <div>
-              <h1 className="text-xl md:text-2xl font-bold">{activity.title}</h1>
-              <div className="flex items-center gap-2 text-sm text-primary-foreground/80">
-                <MapPin className="w-4 h-4" />
-                <span>{activity.location}</span>
+      <header className="bg-gradient-to-r from-primary via-accent to-primary/90 shadow-xl">
+        <div className="max-w-7xl mx-auto px-4 py-5">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => router.push("/")}
+                className="text-white hover:bg-white/20 h-11 w-11"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </Button>
+              <div>
+                <h1 className="text-xl md:text-2xl font-bold text-white">{activity.titleEn}</h1>
+                <div className="flex items-center gap-2 text-sm text-white/90">
+                  <MapPin className="w-4 h-4" />
+                  <span>{activity.location}</span>
+                </div>
               </div>
             </div>
+            <Button
+              variant="ghost"
+              onClick={() => router.push("/")}
+              className="text-white hover:bg-white/20 gap-2 h-11 px-4"
+            >
+              <Home className="w-5 h-5" />
+              <span className="hidden sm:inline">Home</span>
+            </Button>
           </div>
         </div>
       </header>
@@ -76,200 +86,115 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Image Gallery */}
-            <div className="relative h-80 rounded-xl overflow-hidden">
+            {/* Image */}
+            <div className="relative h-96 rounded-2xl overflow-hidden shadow-2xl">
               <Image
                 src={activity.image}
-                alt={activity.title}
+                alt={activity.titleEn}
                 fill
                 className="object-cover"
               />
-              <div className="absolute bottom-4 right-4">
-                <Badge className="bg-primary text-primary-foreground text-lg px-4 py-2">
-                  {activity.price.toLocaleString('vi-VN')}đ/người
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute bottom-6 right-6">
+                <Badge className="bg-white text-primary text-xl px-6 py-3 shadow-xl font-bold">
+                  ${activity.price.toLocaleString()}/person
                 </Badge>
               </div>
             </div>
 
-            {/* Map Section */}
-            <Card className="p-6">
-              <h2 className="text-xl font-bold mb-4">Bản đồ & Điểm đến</h2>
-              <div className="bg-muted rounded-lg h-64 mb-4 flex items-center justify-center relative overflow-hidden">
-                <iframe
-                  src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0977!2d${activity.mapLocation.lng}!3d${activity.mapLocation.lat}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zM!5e0!3m2!1sen!2s!4v1234567890`}
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  className="rounded-lg"
-                />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-semibold">Các điểm đến:</h3>
-                <div className="flex flex-wrap gap-2">
-                  {activity.destinations.map((dest, idx) => (
-                    <Badge key={idx} variant="secondary" className="flex items-center gap-1">
-                      <MapPin className="w-3 h-3" />
-                      {dest}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
+            {/* Description */}
+            <Card className="p-6 shadow-lg border-2 hover:border-primary/30 transition-all">
+              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                About This Experience
+              </h2>
+              <p className="text-muted-foreground leading-relaxed">{activity.descriptionEn}</p>
             </Card>
 
-            {/* Tour Guide */}
-            <Card className="p-6">
-              <h2 className="text-xl font-bold mb-4">Hướng dẫn viên</h2>
-              <div className="flex items-start gap-4">
-                <Avatar className="w-20 h-20">
-                  <AvatarImage src={activity.guideInfo.avatar} alt={activity.guideInfo.name} />
-                  <AvatarFallback>{activity.guideInfo.name[0]}</AvatarFallback>
+            {/* Guide */}
+            <Card className="p-6 shadow-lg border-2 hover:border-primary/30 transition-all">
+              <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Your Guide
+              </h2>
+              <div className="flex items-center gap-4">
+                <Avatar className="w-20 h-20 border-4 border-primary/20 shadow-lg">
+                  <AvatarImage src={activity.guideInfo.avatar} />
+                  <AvatarFallback><User className="w-10 h-10" /></AvatarFallback>
                 </Avatar>
-                <div className="flex-1">
-                  <h3 className="font-semibold text-lg">{activity.guideInfo.name}</h3>
-                  <p className="text-sm text-muted-foreground mb-2">{activity.guideInfo.experience}</p>
-                  <p className="text-sm">{activity.guideInfo.bio}</p>
+                <div>
+                  <h3 className="font-bold text-xl">{activity.guideInfo.name}</h3>
+                  <p className="text-sm text-muted-foreground">{activity.guideInfo.experience}</p>
+                  <p className="text-sm mt-2">{activity.guideInfo.bio}</p>
                 </div>
               </div>
             </Card>
 
-            {/* Advice Section */}
-            <Card className="p-6">
-              <h2 className="text-xl font-bold mb-4">Lời khuyên</h2>
-              <ul className="space-y-2">
-                {activity.advice.map((tip, idx) => (
-                  <li key={idx} className="flex items-start gap-2">
-                    <ChevronRight className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-sm">{tip}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card>
-
-            {/* Reviews */}
-            <Card className="p-6">
-              <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold">Đánh giá</h2>
-                <Button
-                  variant="outline"
-                  onClick={() => router.push(`/reviews/${activity.id}`)}
-                >
-                  Xem tất cả
-                </Button>
-              </div>
-
-              <div className="bg-primary/10 rounded-lg p-6 mb-6">
+            {/* Reviews Preview */}
+            <Card className="p-6 shadow-lg border-2 hover:border-primary/30 transition-all">
+              <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Guest Reviews
+              </h2>
+              <div className="flex items-center gap-8 mb-6">
                 <div className="text-center">
-                  <div className="text-4xl font-bold text-primary mb-2">{activity.rating}</div>
-                  <div className="flex justify-center gap-1 mb-2">
+                  <div className="text-5xl font-bold text-primary">{activity.rating}</div>
+                  <div className="flex gap-1 mt-2">
                     {[...Array(5)].map((_, i) => (
-                      <Star
-                        key={i}
-                        className={`w-5 h-5 ${
-                          i < Math.floor(activity.rating)
-                            ? "fill-yellow-400 text-yellow-400"
-                            : "text-gray-300"
-                        }`}
-                      />
+                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-sm text-muted-foreground">{activity.reviews} đánh giá</p>
+                  <p className="text-sm text-muted-foreground mt-1">{activity.reviews} reviews</p>
                 </div>
               </div>
-
-              <div className="space-y-4">
-                {activity.customerReviews.slice(0, 2).map((review) => (
-                  <div key={review.id} className="border-b pb-4 last:border-0">
-                    <div className="flex items-start gap-3">
-                      <Avatar>
-                        <AvatarImage src={review.avatar} alt={review.name} />
-                        <AvatarFallback>{review.name[0]}</AvatarFallback>
-                      </Avatar>
-                      <div className="flex-1">
-                        <div className="flex items-center justify-between mb-1">
-                          <h4 className="font-semibold">{review.name}</h4>
-                          <span className="text-xs text-muted-foreground">{review.date}</span>
-                        </div>
-                        <div className="flex gap-1 mb-2">
-                          {[...Array(5)].map((_, i) => (
-                            <Star
-                              key={i}
-                              className={`w-4 h-4 ${
-                                i < review.rating
-                                  ? "fill-yellow-400 text-yellow-400"
-                                  : "text-gray-300"
-                              }`}
-                            />
-                          ))}
-                        </div>
-                        <p className="text-sm text-muted-foreground">{review.comment}</p>
-                        {review.images && review.images.length > 0 && (
-                          <div className="flex gap-2 mt-2">
-                            {review.images.map((img, idx) => (
-                              <div key={idx} className="relative w-20 h-20 rounded-lg overflow-hidden">
-                                <Image src={img} alt="" fill className="object-cover" />
-                              </div>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <Button
+                variant="outline"
+                onClick={() => router.push(`/reviews/${activity.id}`)}
+                className="w-full border-2 hover:border-primary hover:bg-primary/10"
+              >
+                View All Reviews
+              </Button>
             </Card>
           </div>
 
           {/* Sidebar */}
           <div className="lg:col-span-1">
-            <Card className="p-6 sticky top-4">
-              <h3 className="text-xl font-bold mb-4">Thông tin chi tiết</h3>
+            <Card className="p-6 sticky top-4 shadow-xl border-2 border-primary/20">
+              <h3 className="text-xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Trip Details
+              </h3>
               
               <div className="space-y-4 mb-6">
-                <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-primary" />
+                <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
+                  <Clock className="w-6 h-6 text-primary" />
                   <div>
-                    <div className="text-sm text-muted-foreground">Thời gian</div>
-                    <div className="font-semibold">{activity.duration}</div>
+                    <div className="text-sm text-muted-foreground">Duration</div>
+                    <div className="font-bold">{activity.duration}</div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <MapPin className="w-5 h-5 text-primary" />
+                <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
+                  <MapPin className="w-6 h-6 text-primary" />
                   <div>
-                    <div className="text-sm text-muted-foreground">Địa điểm</div>
-                    <div className="font-semibold">{activity.location}</div>
+                    <div className="text-sm text-muted-foreground">Location</div>
+                    <div className="font-bold">{activity.location}</div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-3">
-                  <Star className="w-5 h-5 text-primary" />
+                <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
+                  <Star className="w-6 h-6 text-primary" />
                   <div>
-                    <div className="text-sm text-muted-foreground">Đánh giá</div>
-                    <div className="font-semibold">{activity.rating}/5 ({activity.reviews} đánh giá)</div>
+                    <div className="text-sm text-muted-foreground">Rating</div>
+                    <div className="font-bold">{activity.rating}/5 ({activity.reviews} reviews)</div>
                   </div>
                 </div>
               </div>
 
-              <div className="border-t pt-4 mb-6">
-                <h4 className="font-semibold mb-2">Bao gồm:</h4>
-                <ul className="space-y-1 text-sm">
+              <div className="border-t-2 pt-6 mb-6">
+                <h4 className="font-bold mb-3 text-lg">What's Included</h4>
+                <ul className="space-y-2">
                   {activity.detailedInfo.included.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <ChevronRight className="w-4 h-4 text-green-500 flex-shrink-0 mt-0.5" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="mb-6">
-                <h4 className="font-semibold mb-2">Không bao gồm:</h4>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  {activity.detailedInfo.excluded.map((item, idx) => (
-                    <li key={idx} className="flex items-start gap-2">
-                      <ChevronRight className="w-4 h-4 flex-shrink-0 mt-0.5" />
+                    <li key={idx} className="flex items-start gap-2 text-sm">
+                      <div className="w-5 h-5 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <div className="w-2 h-2 rounded-full bg-green-500" />
+                      </div>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -277,10 +202,10 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
               </div>
 
               <Button 
-                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6"
+                className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white h-14 text-lg font-bold shadow-xl"
                 onClick={handleBookNow}
               >
-                Đặt ngay
+                Book Now
               </Button>
             </Card>
           </div>

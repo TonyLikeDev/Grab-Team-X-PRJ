@@ -3,7 +3,7 @@
 import { use, useState } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
-import { ArrowLeft, Calendar, Users, MapPin, Home } from "lucide-react"
+import { ArrowLeft, Calendar, Users, MapPin, Home, Mail, Phone, User } from "lucide-react"
 import { activities } from "@/lib/activities-data"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -13,7 +13,6 @@ import { Checkbox } from "@/components/ui/checkbox"
 import StepProgressBar from "@/components/StepProgressBar"
 import { useBookingStore } from "@/lib/booking-store"
 import { format } from "date-fns"
-import { vi } from "date-fns/locale"
 import { toast } from "sonner"
 
 export default function ReviewBookingPage({ params }: { params: Promise<{ id: string }> }) {
@@ -33,8 +32,8 @@ export default function ReviewBookingPage({ params }: { params: Promise<{ id: st
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold mb-4">Không tìm thấy thông tin đặt chỗ</h1>
-          <Button onClick={() => router.push("/")}>Quay lại trang chủ</Button>
+          <h1 className="text-2xl font-bold mb-4">Booking not found</h1>
+          <Button onClick={() => router.push("/")}>Back to Home</Button>
         </div>
       </div>
     )
@@ -42,151 +41,132 @@ export default function ReviewBookingPage({ params }: { params: Promise<{ id: st
 
   const handleContinue = () => {
     if (!customerInfo.name || !customerInfo.email || !customerInfo.phone) {
-      toast.error("Vui lòng điền đầy đủ thông tin liên hệ")
+      toast.error("Please fill in all contact information")
       return
     }
 
     if (!agreedToTerms) {
-      toast.error("Vui lòng đồng ý với điều khoản và chính sách")
+      toast.error("Please agree to terms and conditions")
       return
     }
 
-    setBookingData({
-      customerInfo: customerInfo,
-    })
-
-    toast.success("Thông tin đã được xác nhận!")
+    setBookingData({ customerInfo })
+    toast.success("Information confirmed!")
     router.push(`/payment/${activity.id}`)
   }
 
-  const steps = ["Chọn tour", "Đặt lịch", "Xác nhận", "Thanh toán", "Hoàn tất"]
+  const steps = ["Select Tour", "Schedule", "Confirm", "Payment", "Complete"]
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background via-secondary/10 to-accent/5">
+    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-accent/5 to-background">
       <StepProgressBar currentStep={3} steps={steps} />
 
-      {/* Header with Home Button */}
-      <header className="bg-gradient-to-r from-primary via-accent to-primary/90 text-primary-foreground shadow-xl">
-        <div className="max-w-7xl mx-auto px-4 py-4">
-          <div className="flex items-center justify-between gap-4">
+      {/* Header */}
+      <header className="bg-gradient-to-r from-primary via-accent to-primary/90 shadow-xl">
+        <div className="max-w-7xl mx-auto px-4 py-5">
+          <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => router.back()}
-                className="text-primary-foreground hover:bg-primary-foreground/20 transition-all h-11 w-11"
+                className="text-white hover:bg-white/20 h-11 w-11"
               >
                 <ArrowLeft className="w-6 h-6" />
               </Button>
               <div>
-                <h1 className="text-xl md:text-2xl font-bold">Xác nhận thông tin</h1>
-                <p className="text-sm text-primary-foreground/90">Kiểm tra lại thông tin đặt chỗ</p>
+                <h1 className="text-xl md:text-2xl font-bold text-white">Confirm Details</h1>
+                <p className="text-sm text-white/90">Review your booking</p>
               </div>
             </div>
             <Button
               variant="ghost"
               onClick={() => router.push("/")}
-              className="text-primary-foreground hover:bg-primary-foreground/20 transition-all gap-2 h-11 px-4"
+              className="text-white hover:bg-white/20 gap-2 h-11 px-4"
             >
               <Home className="w-5 h-5" />
-              <span className="hidden sm:inline font-semibold">Trang chủ</span>
+              <span className="hidden sm:inline">Home</span>
             </Button>
           </div>
         </div>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 py-8">
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Customer Information Form */}
-          <div className="space-y-6">
-            <Card className="p-6 shadow-lg border-2 border-primary/10 hover:border-primary/30 transition-all">
-              <h2 className="text-xl font-bold mb-6 text-primary">Thông tin liên hệ</h2>
+      <main className="max-w-5xl mx-auto px-4 py-8">
+        <div className="grid md:grid-cols-5 gap-8">
+          {/* Form */}
+          <div className="md:col-span-3 space-y-6">
+            <Card className="p-8 shadow-xl border-2 hover:border-primary/30 transition-all">
+              <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Contact Information
+              </h2>
               <div className="space-y-5">
                 <div>
-                  <Label htmlFor="name" className="text-base font-semibold">Họ và tên *</Label>
+                  <Label htmlFor="name" className="text-base font-bold flex items-center gap-2">
+                    <User className="w-4 h-4 text-primary" />
+                    Full Name *
+                  </Label>
                   <Input
                     id="name"
                     value={customerInfo.name}
-                    onChange={(e) =>
-                      setCustomerInfo({ ...customerInfo, name: e.target.value })
-                    }
-                    placeholder="Nguyễn Văn A"
-                    className="h-12 text-base mt-2 border-2"
+                    onChange={(e) => setCustomerInfo({ ...customerInfo, name: e.target.value })}
+                    placeholder="John Doe"
+                    className="h-14 text-base mt-2 border-2"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="email" className="text-base font-semibold">Email *</Label>
+                  <Label htmlFor="email" className="text-base font-bold flex items-center gap-2">
+                    <Mail className="w-4 h-4 text-primary" />
+                    Email *
+                  </Label>
                   <Input
                     id="email"
                     type="email"
                     value={customerInfo.email}
-                    onChange={(e) =>
-                      setCustomerInfo({ ...customerInfo, email: e.target.value })
-                    }
-                    placeholder="example@email.com"
-                    className="h-12 text-base mt-2 border-2"
+                    onChange={(e) => setCustomerInfo({ ...customerInfo, email: e.target.value })}
+                    placeholder="john@example.com"
+                    className="h-14 text-base mt-2 border-2"
                   />
                 </div>
                 <div>
-                  <Label htmlFor="phone" className="text-base font-semibold">Số điện thoại *</Label>
+                  <Label htmlFor="phone" className="text-base font-bold flex items-center gap-2">
+                    <Phone className="w-4 h-4 text-primary" />
+                    Phone *
+                  </Label>
                   <Input
                     id="phone"
                     type="tel"
                     value={customerInfo.phone}
-                    onChange={(e) =>
-                      setCustomerInfo({ ...customerInfo, phone: e.target.value })
-                    }
-                    placeholder="0123456789"
-                    className="h-12 text-base mt-2 border-2"
+                    onChange={(e) => setCustomerInfo({ ...customerInfo, phone: e.target.value })}
+                    placeholder="+1 (555) 000-0000"
+                    className="h-14 text-base mt-2 border-2"
                   />
                 </div>
               </div>
             </Card>
 
             <Card className="p-6 shadow-lg border-2 border-primary/10">
-              <h2 className="text-xl font-bold mb-6 text-primary">Chính sách & Thanh toán</h2>
-              <div className="space-y-5 text-sm text-muted-foreground">
-                <div className="bg-secondary/30 p-4 rounded-lg">
-                  <h3 className="font-semibold text-foreground mb-3 text-base">Chính sách hủy:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Hủy trước 7 ngày: Hoàn 100%</li>
-                    <li>Hủy trước 3 ngày: Hoàn 50%</li>
-                    <li>Hủy trong 3 ngày: Không hoàn tiền</li>
-                  </ul>
-                </div>
-                <div className="bg-secondary/30 p-4 rounded-lg">
-                  <h3 className="font-semibold text-foreground mb-3 text-base">Lưu ý:</h3>
-                  <ul className="list-disc list-inside space-y-2">
-                    <li>Mang theo CMND/CCCD</li>
-                    <li>Có mặt đúng giờ</li>
-                    <li>Tuân thủ hướng dẫn an toàn</li>
-                  </ul>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-3 mt-6 p-4 bg-primary/5 rounded-lg border-2 border-primary/20">
+              <div className="flex items-start gap-3 p-4 bg-secondary/30 rounded-xl border-2 border-primary/20">
                 <Checkbox
                   id="terms"
                   checked={agreedToTerms}
                   onCheckedChange={(checked) => setAgreedToTerms(checked as boolean)}
                   className="mt-1"
                 />
-                <label
-                  htmlFor="terms"
-                  className="text-sm cursor-pointer leading-relaxed"
-                >
-                  Tôi đã đọc và đồng ý với các điều khoản và chính sách của công ty
+                <label htmlFor="terms" className="text-sm cursor-pointer leading-relaxed">
+                  I agree to the terms and conditions, cancellation policy, and understand the requirements for this activity
                 </label>
               </div>
             </Card>
           </div>
 
-          {/* Booking Summary */}
-          <div>
+          {/* Summary */}
+          <div className="md:col-span-2">
             <Card className="p-6 sticky top-4 shadow-xl border-2 border-primary/20">
-              <h2 className="text-xl font-bold mb-4 text-primary">Chi tiết đặt chỗ</h2>
+              <h2 className="text-xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                Trip Summary
+              </h2>
               
-              <div className="relative h-48 rounded-xl overflow-hidden mb-4 shadow-md border-2 border-primary/10">
+              <div className="relative h-40 rounded-xl overflow-hidden mb-4 shadow-lg">
                 <Image
                   src={bookingData.activityImage}
                   alt={bookingData.activityTitle}
@@ -195,55 +175,49 @@ export default function ReviewBookingPage({ params }: { params: Promise<{ id: st
                 />
               </div>
 
-              <h3 className="font-bold text-lg mb-6">{bookingData.activityTitle}</h3>
+              <h3 className="font-bold text-lg mb-4">{bookingData.activityTitle}</h3>
 
-              <div className="space-y-4 mb-6">
-                <div className="flex items-start gap-3 p-3 bg-secondary/30 rounded-lg">
-                  <Calendar className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+              <div className="space-y-3 mb-6">
+                <div className="flex items-center gap-3 p-3 bg-secondary/30 rounded-lg">
+                  <Calendar className="w-5 h-5 text-primary" />
                   <div className="flex-1">
-                    <div className="text-sm text-muted-foreground">Ngày đi</div>
-                    <div className="font-semibold">
-                      {bookingData.date ? format(new Date(bookingData.date), "EEEE, dd/MM/yyyy", { locale: vi }) : ""}
+                    <div className="text-xs text-muted-foreground">Date</div>
+                    <div className="font-bold text-sm">
+                      {bookingData.date ? format(new Date(bookingData.date), "MMM dd, yyyy") : ""}
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-3 bg-secondary/30 rounded-lg">
-                  <Users className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex items-center gap-3 p-3 bg-secondary/30 rounded-lg">
+                  <Users className="w-5 h-5 text-primary" />
                   <div className="flex-1">
-                    <div className="text-sm text-muted-foreground">Số khách</div>
-                    <div className="font-semibold">{bookingData.guests} người</div>
+                    <div className="text-xs text-muted-foreground">Guests</div>
+                    <div className="font-bold text-sm">{bookingData.guests} people</div>
                   </div>
                 </div>
-                <div className="flex items-start gap-3 p-3 bg-secondary/30 rounded-lg">
-                  <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                <div className="flex items-center gap-3 p-3 bg-secondary/30 rounded-lg">
+                  <MapPin className="w-5 h-5 text-primary" />
                   <div className="flex-1">
-                    <div className="text-sm text-muted-foreground">Địa điểm</div>
-                    <div className="font-semibold">{activity.location}</div>
+                    <div className="text-xs text-muted-foreground">Location</div>
+                    <div className="font-bold text-sm">{activity.location}</div>
                   </div>
                 </div>
               </div>
 
-              <div className="border-t-2 border-primary/20 pt-6 mb-6 bg-gradient-to-br from-primary/5 to-accent/5 -mx-6 px-6 py-4">
-                <div className="space-y-3 mb-4">
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Giá tour:</span>
-                    <span className="font-semibold">{bookingData.activityPrice.toLocaleString('vi-VN')}đ × {bookingData.guests}</span>
-                  </div>
-                </div>
-                <div className="flex justify-between items-center pt-3 border-t-2 border-primary/20">
-                  <span className="font-bold text-lg">Tổng cộng:</span>
-                  <span className="font-bold text-3xl text-primary">
-                    {bookingData.totalPrice.toLocaleString('vi-VN')}đ
+              <div className="border-t-2 pt-4 mb-6">
+                <div className="flex justify-between items-center">
+                  <span className="font-bold text-lg">Total:</span>
+                  <span className="font-bold text-3xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                    ${bookingData.totalPrice.toLocaleString()}
                   </span>
                 </div>
               </div>
 
               <Button 
-                className="w-full bg-gradient-to-r from-primary via-accent to-primary hover:from-primary/90 hover:via-accent/90 hover:to-primary/90 text-primary-foreground h-14 text-lg font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white h-14 text-lg font-bold shadow-xl"
                 onClick={handleContinue}
                 disabled={!agreedToTerms || !customerInfo.name || !customerInfo.email || !customerInfo.phone}
               >
-                Tiếp tục thanh toán
+                Continue to Payment
               </Button>
             </Card>
           </div>

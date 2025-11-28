@@ -6,8 +6,8 @@ import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "SEA STORIES - Khám phá Việt Nam",
-  description: "Đặt tour du lịch trải nghiệm ngoài trời tại Việt Nam",
+  title: "SEA STORIES - Discover Vietnam",
+  description: "Book amazing outdoor adventure tours in Vietnam",
 };
 
 export default function RootLayout({

@@ -93,7 +93,7 @@ export default function PaymentPage({ params }: { params: Promise<{ id: string }
           {/* Payment Methods */}
           <div className="md:col-span-3 space-y-6">
             <Card className="p-8 shadow-xl border-2 hover:border-primary/30 transition-all">
-              <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h2 className="text-2xl font-bold mb-6 text-black">
                 Payment Method
               </h2>
               
@@ -190,7 +190,7 @@ export default function PaymentPage({ params }: { params: Promise<{ id: string }
           {/* Summary */}
           <div className="md:col-span-2">
             <Card className="p-6 sticky top-4 shadow-xl border-2 border-primary/20">
-              <h2 className="text-xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h2 className="text-xl font-bold mb-4 text-black">
                 Order Summary
               </h2>
               
@@ -216,15 +216,15 @@ export default function PaymentPage({ params }: { params: Promise<{ id: string }
                 </div>
                 <div className="flex justify-between p-3 bg-secondary/30 rounded-lg">
                   <span className="text-muted-foreground">Price:</span>
-                  <span className="font-bold">${bookingData.activityPrice.toLocaleString()} × {bookingData.guests}</span>
+                  <span className="font-bold">{bookingData.activityPrice.toLocaleString()}đ × {bookingData.guests}</span>
                 </div>
               </div>
 
               <div className="border-t-2 pt-6 mb-6">
                 <div className="flex justify-between items-center mb-4">
                   <span className="font-bold text-lg">Total:</span>
-                  <span className="font-bold text-3xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    ${bookingData.totalPrice.toLocaleString()}
+                  <span className="font-bold text-3xl text-black">
+                    {bookingData.totalPrice.toLocaleString()}đ
                   </span>
                 </div>
               </div>

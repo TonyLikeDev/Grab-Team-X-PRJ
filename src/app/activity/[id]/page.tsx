@@ -96,25 +96,25 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <div className="absolute bottom-6 right-6">
-                <Badge className="bg-white text-primary text-xl px-6 py-3 shadow-xl font-bold">
-                  ${activity.price.toLocaleString()}/person
+                <Badge className="bg-white text-black text-xl px-6 py-3 shadow-xl font-bold">
+                  {activity.price.toLocaleString()}đ/person
                 </Badge>
               </div>
             </div>
 
             {/* Description */}
             <Card className="p-6 shadow-lg border-2 hover:border-primary/30 transition-all">
-              <h2 className="text-2xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                About This Experience
-              </h2>
-              <p className="text-muted-foreground leading-relaxed">{activity.descriptionEn}</p>
+              <h2 className="text-2xl font-bold mb-4 text-black">
+                  About This Experience
+                </h2>
+              <p className="text-black leading-relaxed whitespace-pre-wrap">{activity.descriptionEn}</p>
             </Card>
 
             {/* Guide */}
             <Card className="p-6 shadow-lg border-2 hover:border-primary/30 transition-all">
-              <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Your Guide
-              </h2>
+              <h2 className="text-2xl font-bold mb-6 text-black">
+                  Your Guide
+                </h2>
               <div className="flex items-center gap-4">
                 <Avatar className="w-20 h-20 border-4 border-primary/20 shadow-lg">
                   <AvatarImage src={activity.guideInfo.avatar} />
@@ -130,12 +130,12 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
 
             {/* Reviews Preview */}
             <Card className="p-6 shadow-lg border-2 hover:border-primary/30 transition-all">
-              <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Guest Reviews
-              </h2>
+              <h2 className="text-2xl font-bold mb-6 text-black">
+                  Guest Reviews
+                </h2>
               <div className="flex items-center gap-8 mb-6">
                 <div className="text-center">
-                  <div className="text-5xl font-bold text-primary">{activity.rating}</div>
+                  <div className="text-5xl font-bold text-black">{activity.rating}</div>
                   <div className="flex gap-1 mt-2">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
@@ -157,13 +157,13 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
           {/* Sidebar */}
           <div className="lg:col-span-1">
             <Card className="p-6 sticky top-4 shadow-xl border-2 border-primary/20">
-              <h3 className="text-xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h3 className="text-xl font-bold mb-6 text-black">
                 Trip Details
               </h3>
               
               <div className="space-y-4 mb-6">
                 <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
-                  <Clock className="w-6 h-6 text-primary" />
+                  <Clock className="w-6 h-6 text-black" />
                   <div>
                     <div className="text-sm text-muted-foreground">Duration</div>
                     <div className="font-bold">{activity.duration}</div>
@@ -171,7 +171,7 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
                 </div>
 
                 <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
-                  <MapPin className="w-6 h-6 text-primary" />
+                  <MapPin className="w-6 h-6 text-black" />
                   <div>
                     <div className="text-sm text-muted-foreground">Location</div>
                     <div className="font-bold">{activity.location}</div>
@@ -179,7 +179,7 @@ export default function ActivityPage({ params }: { params: Promise<{ id: string 
                 </div>
 
                 <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
-                  <Star className="w-6 h-6 text-primary" />
+                  <Star className="w-6 h-6 text-black" />
                   <div>
                     <div className="text-sm text-muted-foreground">Rating</div>
                     <div className="font-bold">{activity.rating}/5 ({activity.reviews} reviews)</div>

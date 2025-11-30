@@ -6,7 +6,7 @@ import Script from "next/script";
 import { Toaster } from "@/components/ui/sonner";
 
 export const metadata: Metadata = {
-  title: "SEA STORIES - Discover Vietnam",
+  title: "beLocal - Discover Vietnam",
   description: "Book amazing outdoor adventure tours in Vietnam",
 };
 

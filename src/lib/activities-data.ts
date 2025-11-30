@@ -42,51 +42,51 @@ export interface Activity {
 export const activities: Activity[] = [
   {
     id: "1",
-    title: "Sáng đi biển cùng chủ A",
-    titleEn: "Morning Beach with Guide A",
-    description: "Trải nghiệm bình minh tuyệt đẹp tại bãi biển",
-    descriptionEn: "Experience beautiful sunrise at the beach",
+    title: "Go Fishing on a Round Boat",
+    titleEn: "Go Fishing on a Round Boat",
+    description: "Why is this experience meaningful to the community?\n\n• The traditional net fishing profession is gradually disappearing in Nam Ô\n• Participating in this experience helps fishermen gain stable income outside of the fishing season\n• Vietnamese and international guests have the opportunity to connect with the authentic life of a fisherman, with a commitment to non-commercialization\n• Each booking contributes 20,000 VND to the 'New Nets for Fishermen' fund",
+    descriptionEn: "Why is this experience meaningful to the community?\n\n• The traditional net fishing profession is gradually disappearing in Nam Ô\n• Participating in this experience helps fishermen gain stable income outside of the fishing season\n• Vietnamese and international guests have the opportunity to connect with the authentic life of a fisherman, with a commitment to non-commercialization\n• Each booking contributes 20,000 VND to the 'New Nets for Fishermen' fund",
     price: 500000,
-    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=600&fit=crop",
-    duration: "4 giờ",
+    image: "https://i.pinimg.com/1200x/dc/f9/0f/dcf90f7a1f908a656264afd0553d3fdb.jpg",
+    duration: "4 hours",
     location: "Nha Trang",
     rating: 4.8,
     reviews: 124,
     guideInfo: {
-      name: "Minh Tuấn",
+      name: "Unc. Bay",
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
-      bio: "Hướng dẫn viên chuyên nghiệp với 8 năm kinh nghiệm",
-      experience: "8 năm kinh nghiệm"
+      bio: "I started going out to sea when I was 14. Setting out to sea every morning and returning to sell my catch at the market has been my familiar routine for 30 years. I opened up this experience to share the fishing profession that I have been so passionate about all this time. If anyone enjoys the feeling of the early morning sea and wants to understand how the people of Da Nang live, I invite you to join me for a session.",
+      experience: "Fisherman, born and raised in Nam Ô "
     },
-    destinations: ["Bãi Dài", "Hòn Chồng", "Vinpearl"],
+    destinations: ["Dai Beach", "Hon Chong", "Vinpearl"],
     advice: [
-      "Mang theo kem chống nắng",
-      "Đến sớm để ngắm bình minh",
-      "Mặc đồ thoải mái"
+      "Bring sunscreen",
+      "Arrive early to watch the sunrise",
+      "Wear comfortable clothes"
     ],
     detailedInfo: {
       schedule: "5:00 AM - 9:00 AM",
-      included: ["Xe đưa đón", "Bữa sáng nhẹ", "Hướng dẫn viên"],
-      excluded: ["Chi phí cá nhân", "Bảo hiểm"],
-      requirements: ["Sức khỏe tốt", "Biết bơi cơ bản"]
+      included: ["Transportation", "Light breakfast", "Guide"],
+      excluded: ["Personal expenses", "Insurance"],
+      requirements: ["Good health", "Basic swimming ability"]
     },
     customerReviews: [
       {
         id: "1",
-        name: "Thùy Linh",
+        name: "Thuy Linh",
         avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop",
         rating: 5,
         date: "15/03/2024",
-        comment: "Trải nghiệm tuyệt vời! Cảnh đẹp và hướng dẫn viên nhiệt tình.",
+        comment: "Wonderful experience! Beautiful scenery and enthusiastic guide.",
         images: ["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"]
       },
       {
         id: "2",
-        name: "Văn An",
+        name: "Van An",
         avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop",
         rating: 5,
         date: "10/03/2024",
-        comment: "Đáng đồng tiền bát gạo. Sẽ quay lại lần sau!",
+        comment: "Worth every penny. Will come back next time!",
         images: ["https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400&h=300&fit=crop"]
       }
     ],
@@ -94,33 +94,33 @@ export const activities: Activity[] = [
   },
   {
     id: "2",
-    title: "Học làm gốm Bàu Trúc",
+    title: "Bau Truc Pottery Making",
     titleEn: "Bau Truc Pottery Making",
-    description: "Học nghệ thuật làm gốm truyền thống",
+    description: "Learn traditional pottery making",
     descriptionEn: "Learn traditional pottery making",
     price: 300000,
     image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=800&h=600&fit=crop",
-    duration: "3 giờ",
-    location: "Ninh Thuận",
+    duration: "3 hours",
+    location: "Ninh Thuan",
     rating: 4.7,
     reviews: 89,
     guideInfo: {
-      name: "Bà Thu",
+      name: "Mrs. Thu",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop",
-      bio: "Nghệ nhân gốm với hơn 30 năm kinh nghiệm",
-      experience: "30 năm kinh nghiệm"
+      bio: "Pottery artisan with over 30 years of experience",
+      experience: "30 years experience"
     },
-    destinations: ["Làng gốm Bàu Trúc", "Chợ địa phương"],
+    destinations: ["Bau Truc Pottery Village", "Local Market"],
     advice: [
-      "Mặc quần áo thoải mái, có thể bẩn",
-      "Chuẩn bị tinh thần làm việc tay",
-      "Mang theo camera để ghi lại kỷ niệm"
+      "Wear comfortable clothes, they may get dirty",
+      "Be prepared for handwork",
+      "Bring a camera to capture memories"
     ],
     detailedInfo: {
       schedule: "2:00 PM - 5:00 PM",
-      included: ["Vật liệu làm gốm", "Hướng dẫn", "Sản phẩm mang về"],
-      excluded: ["Đồ ăn uống", "Vận chuyển"],
-      requirements: ["Từ 8 tuổi trở lên"]
+      included: ["Pottery materials", "Instruction", "Take-home product"],
+      excluded: ["Food and drinks", "Transportation"],
+      requirements: ["8 years old and up"]
     },
     customerReviews: [
       {
@@ -129,7 +129,7 @@ export const activities: Activity[] = [
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop",
         rating: 5,
         date: "20/03/2024",
-        comment: "Trải nghiệm văn hóa tuyệt vời. Rất thích!",
+        comment: "Wonderful cultural experience. Really loved it!",
         images: ["https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?w=400&h=300&fit=crop"]
       }
     ],
@@ -137,42 +137,42 @@ export const activities: Activity[] = [
   },
   {
     id: "3",
-    title: "Chèo SUP Nước Hoàng Hôn",
+    title: "Sunset SUP Paddling",
     titleEn: "Sunset SUP Paddling",
-    description: "Chèo thuyền SUP ngắm hoàng hôn trên biển",
+    description: "SUP paddling while watching sunset",
     descriptionEn: "SUP paddling while watching sunset",
     price: 450000,
     image: "https://images.unsplash.com/photo-1502933691298-84fc14542831?w=800&h=600&fit=crop",
-    duration: "2 giờ",
-    location: "Đà Nẵng",
+    duration: "2 hours",
+    location: "Da Nang",
     rating: 4.9,
     reviews: 156,
     guideInfo: {
-      name: "Hoàng Long",
+      name: "Hoang Long",
       avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop",
-      bio: "Huấn luyện viên SUP chuyên nghiệp",
-      experience: "5 năm kinh nghiệm"
+      bio: "Professional SUP instructor",
+      experience: "5 years experience"
     },
-    destinations: ["Bãi biển Mỹ Khê", "Cầu Rồng"],
+    destinations: ["My Khe Beach", "Dragon Bridge"],
     advice: [
-      "Biết bơi cơ bản",
-      "Mang theo áo phao",
-      "Đến đúng giờ để không lỡ hoàng hôn"
+      "Basic swimming ability required",
+      "Bring a life jacket",
+      "Arrive on time to catch the sunset"
     ],
     detailedInfo: {
       schedule: "5:00 PM - 7:00 PM",
-      included: ["Thiết bị SUP", "Áo phao", "Hướng dẫn viên", "Nước uống"],
-      excluded: ["Bảo hiểm", "Ảnh chụp"],
-      requirements: ["Biết bơi", "Từ 12 tuổi trở lên", "Sức khỏe tốt"]
+      included: ["SUP equipment", "Life jacket", "Guide", "Drinking water"],
+      excluded: ["Insurance", "Photos"],
+      requirements: ["Can swim", "12 years old and up", "Good health"]
     },
     customerReviews: [
       {
         id: "1",
-        name: "Quốc Anh",
+        name: "Quoc Anh",
         avatar: "https://images.unsplash.com/photo-1463453091185-61582044d556?w=200&h=200&fit=crop",
         rating: 5,
         date: "25/03/2024",
-        comment: "Cảnh hoàng hôn tuyệt đẹp! Trải nghiệm đáng nhớ.",
+        comment: "Beautiful sunset view! Unforgettable experience.",
         images: ["https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=400&h=300&fit=crop"]
       }
     ],
@@ -180,42 +180,42 @@ export const activities: Activity[] = [
   },
   {
     id: "4",
-    title: "Trekking Sapa Chinh Phục",
+    title: "Sapa Trekking Adventure",
     titleEn: "Sapa Trekking Adventure",
-    description: "Leo núi và khám phá ruộng bậc thang",
+    description: "Mountain trekking and rice terrace exploration",
     descriptionEn: "Mountain trekking and rice terrace exploration",
     price: 800000,
     image: "https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=800&h=600&fit=crop",
-    duration: "1 ngày",
-    location: "Sapa, Lào Cai",
+    duration: "1 day",
+    location: "Sapa, Lao Cai",
     rating: 4.8,
     reviews: 203,
     guideInfo: {
-      name: "Ly Chá",
+      name: "Ly Cha",
       avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=200&h=200&fit=crop",
-      bio: "Người dân tộc H'Mông địa phương",
-      experience: "10 năm kinh nghiệm"
+      bio: "Local H'Mong ethnic guide",
+      experience: "10 years experience"
     },
-    destinations: ["Cát Cát", "Y Linh Hồ", "Lao Chải", "Tả Van"],
+    destinations: ["Cat Cat", "Y Linh Ho", "Lao Chai", "Ta Van"],
     advice: [
-      "Mang giày trekking tốt",
-      "Chuẩn bị áo ấm",
-      "Mang theo thuốc cá nhân"
+      "Wear good trekking shoes",
+      "Bring warm clothes",
+      "Bring personal medications"
     ],
     detailedInfo: {
       schedule: "7:00 AM - 5:00 PM",
-      included: ["Hướng dẫn viên", "Bữa trưa", "Xe đưa đón", "Nước suối"],
-      excluded: ["Bảo hiểm", "Chi phí cá nhân"],
-      requirements: ["Sức khỏe tốt", "Thể lực tốt", "Từ 10 tuổi"]
+      included: ["Guide", "Lunch", "Transportation", "Spring water"],
+      excluded: ["Insurance", "Personal expenses"],
+      requirements: ["Good health", "Good fitness level", "10 years old and up"]
     },
     customerReviews: [
       {
         id: "1",
-        name: "Phương Anh",
+        name: "Phuong Anh",
         avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?w=200&h=200&fit=crop",
         rating: 5,
         date: "01/04/2024",
-        comment: "Ruộng bậc thang đẹp không thể tả! Hướng dẫn viên rất nhiệt tình.",
+        comment: "Beautiful rice terraces! Enthusiastic guide.",
         images: ["https://images.unsplash.com/photo-1528127269322-539801943592?w=400&h=300&fit=crop"]
       }
     ],
@@ -223,42 +223,42 @@ export const activities: Activity[] = [
   },
   {
     id: "5",
-    title: "Lặn Biển Ngắm San Hô",
+    title: "Coral Reef Diving",
     titleEn: "Coral Reef Diving",
-    description: "Khám phá thế giới dưới biển đầy màu sắc",
+    description: "Explore the colorful underwater world",
     descriptionEn: "Explore the colorful underwater world",
     price: 1200000,
     image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=600&fit=crop",
-    duration: "5 giờ",
-    location: "Phú Quốc",
+    duration: "5 hours",
+    location: "Phu Quoc",
     rating: 4.9,
     reviews: 178,
     guideInfo: {
-      name: "Tuấn Anh",
+      name: "Tuan Anh",
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop",
-      bio: "Thợ lặn chuyên nghiệp PADI",
-      experience: "12 năm kinh nghiệm"
+      bio: "PADI certified professional diver",
+      experience: "12 years experience"
     },
-    destinations: ["Hòn Mây Rút", "Hòn Thơm", "Hòn Móng Tay"],
+    destinations: ["Hon May Rut", "Hon Thom", "Hon Mong Tay"],
     advice: [
-      "Phải có chứng chỉ lặn",
-      "Không lặn nếu bị cảm",
-      "Tuân thủ hướng dẫn an toàn"
+      "Diving certification required",
+      "Do not dive if sick",
+      "Follow safety guidelines"
     ],
     detailedInfo: {
       schedule: "8:00 AM - 1:00 PM",
-      included: ["Thiết bị lặn", "Hướng dẫn viên", "Bữa trưa", "Bảo hiểm"],
-      excluded: ["Ảnh/video dưới nước", "Chi phí cá nhân"],
-      requirements: ["Chứng chỉ lặn", "Sức khỏe tốt", "Từ 15 tuổi"]
+      included: ["Diving equipment", "Guide", "Lunch", "Insurance"],
+      excluded: ["Underwater photos/videos", "Personal expenses"],
+      requirements: ["Diving certification", "Good health", "15 years old and up"]
     },
     customerReviews: [
       {
         id: "1",
-        name: "Đức Trung",
+        name: "Duc Trung",
         avatar: "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=200&h=200&fit=crop",
         rating: 5,
         date: "05/04/2024",
-        comment: "San hô đẹp tuyệt vời! An toàn và chuyên nghiệp.",
+        comment: "Beautiful corals! Safe and professional.",
         images: ["https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=400&h=300&fit=crop"]
       }
     ],
@@ -266,42 +266,42 @@ export const activities: Activity[] = [
   },
   {
     id: "6",
-    title: "Chèo Kayak Vịnh Hạ Long",
+    title: "Ha Long Bay Kayaking",
     titleEn: "Ha Long Bay Kayaking",
-    description: "Chèo kayak khám phá hang động kỳ thú",
+    description: "Kayak through mysterious caves",
     descriptionEn: "Kayak through mysterious caves",
     price: 650000,
     image: "https://images.unsplash.com/photo-1528127269322-539801943592?w=800&h=600&fit=crop",
-    duration: "6 giờ",
-    location: "Hạ Long, Quảng Ninh",
+    duration: "6 hours",
+    location: "Ha Long, Quang Ninh",
     rating: 4.8,
     reviews: 245,
     guideInfo: {
-      name: "Văn Hải",
+      name: "Van Hai",
       avatar: "https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?w=200&h=200&fit=crop",
-      bio: "Hướng dẫn viên kayak giàu kinh nghiệm",
-      experience: "7 năm kinh nghiệm"
+      bio: "Experienced kayak guide",
+      experience: "7 years experience"
     },
-    destinations: ["Hang Sửng Sốt", "Đảo Titop", "Làng chài Cửa Vạn"],
+    destinations: ["Sung Sot Cave", "Titop Island", "Cua Van Fishing Village"],
     advice: [
-      "Mang theo áo khoác chống nước",
-      "Bảo vệ thiết bị điện tử",
-      "Đi giày chống trượt"
+      "Bring waterproof jacket",
+      "Protect electronic devices",
+      "Wear non-slip shoes"
     ],
     detailedInfo: {
       schedule: "9:00 AM - 3:00 PM",
-      included: ["Kayak", "Áo phao", "Hướng dẫn viên", "Bữa trưa", "Nước uống"],
-      excluded: ["Bảo hiểm", "Chi phí cá nhân"],
-      requirements: ["Biết bơi cơ bản", "Từ 10 tuổi"]
+      included: ["Kayak", "Life jacket", "Guide", "Lunch", "Drinking water"],
+      excluded: ["Insurance", "Personal expenses"],
+      requirements: ["Basic swimming ability", "10 years old and up"]
     },
     customerReviews: [
       {
         id: "1",
-        name: "Hồng Nhung",
+        name: "Hong Nhung",
         avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&h=200&fit=crop",
         rating: 5,
         date: "10/04/2024",
-        comment: "Vịnh Hạ Long đẹp như tranh vẽ. Chèo kayak rất thú vị!",
+        comment: "Ha Long Bay is beautiful like a painting. Kayaking is very fun!",
         images: ["https://images.unsplash.com/photo-1583417319070-4a69db38a482?w=400&h=300&fit=crop"]
       }
     ],
@@ -309,42 +309,42 @@ export const activities: Activity[] = [
   },
   {
     id: "7",
-    title: "Bay Dù Lượn Mũi Né",
+    title: "Mui Ne Paragliding",
     titleEn: "Mui Ne Paragliding",
-    description: "Trải nghiệm cảm giác bay trên không trung",
+    description: "Experience the feeling of flying in the air",
     descriptionEn: "Experience the feeling of flying in the air",
     price: 1500000,
     image: "https://images.unsplash.com/photo-1519904981063-b0cf448d479e?w=800&h=600&fit=crop",
-    duration: "2 giờ",
-    location: "Mũi Né, Bình Thuận",
+    duration: "2 hours",
+    location: "Mui Ne, Binh Thuan",
     rating: 4.9,
     reviews: 134,
     guideInfo: {
-      name: "Minh Quân",
+      name: "Minh Quan",
       avatar: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=200&h=200&fit=crop",
-      bio: "Phi công dù lượn chuyên nghiệp",
-      experience: "9 năm kinh nghiệm"
+      bio: "Professional paraglider pilot",
+      experience: "9 years experience"
     },
-    destinations: ["Đồi cát bay", "Bãi biển Mũi Né"],
+    destinations: ["Flying sand dune", "Mui Ne Beach"],
     advice: [
-      "Kiểm tra thời tiết trước",
-      "Không bay nếu sợ độ cao",
-      "Mặc quần áo thoải mái"
+      "Check weather beforehand",
+      "Do not fly if afraid of heights",
+      "Wear comfortable clothes"
     ],
     detailedInfo: {
-      schedule: "7:00 AM - 9:00 AM hoặc 4:00 PM - 6:00 PM",
-      included: ["Thiết bị bay", "Bảo hiểm", "Hướng dẫn viên", "Video bay"],
-      excluded: ["Đồ ăn uống", "Vận chuyển"],
-      requirements: ["Cân nặng dưới 100kg", "Từ 16 tuổi", "Không sợ độ cao"]
+      schedule: "7:00 AM - 9:00 AM or 4:00 PM - 6:00 PM",
+      included: ["Flight equipment", "Insurance", "Guide", "Flight video"],
+      excluded: ["Food and drinks", "Transportation"],
+      requirements: ["Weight under 100kg", "16 years old and up", "Not afraid of heights"]
     },
     customerReviews: [
       {
         id: "1",
-        name: "Bảo Long",
+        name: "Bao Long",
         avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop",
         rating: 5,
         date: "15/04/2024",
-        comment: "Cảm giác bay thật tuyệt vời! An toàn và chuyên nghiệp.",
+        comment: "The feeling of flying is amazing! Safe and professional.",
         images: ["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=300&fit=crop"]
       }
     ],
@@ -352,42 +352,42 @@ export const activities: Activity[] = [
   },
   {
     id: "8",
-    title: "Đi Xe Đạp Cù Lao Chàm",
+    title: "Cu Lao Cham Cycling",
     titleEn: "Cu Lao Cham Cycling",
-    description: "Đạp xe vòng quanh đảo nguyên sơ",
+    description: "Cycle around the pristine island",
     descriptionEn: "Cycle around the pristine island",
     price: 400000,
     image: "https://images.unsplash.com/photo-1474552226712-ac0f0961a954?w=800&h=600&fit=crop",
-    duration: "1 ngày",
-    location: "Cù Lao Chàm, Hội An",
+    duration: "1 day",
+    location: "Cu Lao Cham, Hoi An",
     rating: 4.7,
     reviews: 167,
     guideInfo: {
-      name: "Thanh Tùng",
+      name: "Thanh Tung",
       avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop",
-      bio: "Hướng dẫn viên địa phương",
-      experience: "6 năm kinh nghiệm"
+      bio: "Local guide",
+      experience: "6 years experience"
     },
-    destinations: ["Bãi Chồng", "Bãi Ông", "Làng chài Cù Lao Chàm"],
+    destinations: ["Chong Beach", "Ong Beach", "Cu Lao Cham Fishing Village"],
     advice: [
-      "Mang theo kem chống nắng",
-      "Uống nhiều nước",
-      "Mặc quần áo thoải mái"
+      "Bring sunscreen",
+      "Drink plenty of water",
+      "Wear comfortable clothes"
     ],
     detailedInfo: {
       schedule: "7:00 AM - 4:00 PM",
-      included: ["Xe đạp", "Phà đi-về", "Bữa trưa", "Hướng dẫn viên"],
-      excluded: ["Chi phí cá nhân", "Bảo hiểm"],
-      requirements: ["Biết đạp xe", "Từ 8 tuổi"]
+      included: ["Bicycle", "Ferry round trip", "Lunch", "Guide"],
+      excluded: ["Personal expenses", "Insurance"],
+      requirements: ["Able to ride a bicycle", "8 years old and up"]
     },
     customerReviews: [
       {
         id: "1",
-        name: "Thu Hà",
+        name: "Thu Ha",
         avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&h=200&fit=crop",
         rating: 5,
         date: "20/04/2024",
-        comment: "Đảo đẹp và yên bình. Đạp xe rất dễ chịu!",
+        comment: "Beautiful and peaceful island. Cycling is very comfortable!",
         images: ["https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=400&h=300&fit=crop"]
       }
     ],
@@ -395,42 +395,42 @@ export const activities: Activity[] = [
   },
   {
     id: "9",
-    title: "Leo Núi Đá Fansipan",
+    title: "Fansipan Mountain Climbing",
     titleEn: "Fansipan Mountain Climbing",
-    description: "Chinh phục nóc nhà Đông Dương",
+    description: "Conquer the Roof of Indochina",
     descriptionEn: "Conquer the Roof of Indochina",
     price: 2000000,
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-    duration: "2 ngày",
-    location: "Fansipan, Lào Cai",
+    duration: "2 days",
+    location: "Fansipan, Lao Cai",
     rating: 4.8,
     reviews: 189,
     guideInfo: {
-      name: "Sơn Tùng",
+      name: "Son Tung",
       avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop",
-      bio: "Hướng dẫn viên leo núi chuyên nghiệp",
-      experience: "15 năm kinh nghiệm"
+      bio: "Professional mountain climbing guide",
+      experience: "15 years experience"
     },
-    destinations: ["Đỉnh Fansipan", "Rừng tre", "Trạm dừng chân"],
+    destinations: ["Fansipan Peak", "Bamboo forest", "Rest station"],
     advice: [
-      "Chuẩn bị thể lực tốt",
-      "Mang đồ leo núi chuyên dụng",
-      "Kiểm tra thời tiết trước"
+      "Build good fitness level",
+      "Bring specialized climbing gear",
+      "Check weather beforehand"
     ],
     detailedInfo: {
-      schedule: "2 ngày 1 đêm",
-      included: ["Hướng dẫn viên", "Bữa ăn", "Lều trại", "Thiết bị leo núi"],
-      excluded: ["Bảo hiểm", "Chi phí cá nhân"],
-      requirements: ["Thể lực tốt", "Từ 16 tuổi", "Kinh nghiệm leo núi"]
+      schedule: "2 days 1 night",
+      included: ["Guide", "Meals", "Tent", "Climbing equipment"],
+      excluded: ["Insurance", "Personal expenses"],
+      requirements: ["Good fitness level", "16 years old and up", "Mountain climbing experience"]
     },
     customerReviews: [
       {
         id: "1",
-        name: "Minh Hoàng",
+        name: "Minh Hoang",
         avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop",
         rating: 5,
         date: "25/04/2024",
-        comment: "Chuyến đi khó khăn nhưng đáng giá. Phong cảnh tuyệt đẹp!",
+        comment: "Difficult trip but worth it. Beautiful scenery!",
         images: ["https://images.unsplash.com/photo-1528127269322-539801943592?w=400&h=300&fit=crop"]
       }
     ],
@@ -438,33 +438,33 @@ export const activities: Activity[] = [
   },
   {
     id: "10",
-    title: "Thuyền Thúng Hội An",
+    title: "Hoi An Basket Boat",
     titleEn: "Hoi An Basket Boat",
-    description: "Chèo thuyền thúng trên rừng dừa",
+    description: "Paddle basket boat in coconut forest",
     descriptionEn: "Paddle basket boat in coconut forest",
     price: 350000,
     image: "https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=800&h=600&fit=crop",
-    duration: "3 giờ",
-    location: "Hội An, Quảng Nam",
+    duration: "3 hours",
+    location: "Hoi An, Quang Nam",
     rating: 4.9,
     reviews: 312,
     guideInfo: {
-      name: "Cô Ba",
+      name: "Mrs. Ba",
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop",
-      bio: "Nghệ nhân chèo thuyền thúng lão làng",
-      experience: "25 năm kinh nghiệm"
+      bio: "Master basket boat paddler",
+      experience: "25 years experience"
     },
-    destinations: ["Rừng dừa Bảy Mẫu", "Làng rau Trà Quế"],
+    destinations: ["Bay Mau Coconut Forest", "Tra Que Vegetable Village"],
     advice: [
-      "Mang theo mũ và kem chống nắng",
-      "Chuẩn bị camera chống nước",
-      "Mặc áo phao"
+      "Bring hat and sunscreen",
+      "Prepare waterproof camera",
+      "Wear life jacket"
     ],
     detailedInfo: {
-      schedule: "8:00 AM - 11:00 AM hoặc 2:00 PM - 5:00 PM",
-      included: ["Thuyền thúng", "Áo phao", "Hướng dẫn viên", "Nước dừa"],
-      excluded: ["Đồ ăn nhẹ", "Vận chuyển"],
-      requirements: ["Không cần biết bơi", "Từ 5 tuổi"]
+      schedule: "8:00 AM - 11:00 AM or 2:00 PM - 5:00 PM",
+      included: ["Basket boat", "Life jacket", "Guide", "Coconut water"],
+      excluded: ["Light snacks", "Transportation"],
+      requirements: ["Swimming not required", "5 years old and up"]
     },
     customerReviews: [
       {
@@ -473,7 +473,7 @@ export const activities: Activity[] = [
         avatar: "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=200&h=200&fit=crop",
         rating: 5,
         date: "30/04/2024",
-        comment: "Trải nghiệm văn hóa độc đáo! Rất vui và thú vị.",
+        comment: "Unique cultural experience! Very fun and interesting.",
         images: ["https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?w=400&h=300&fit=crop"]
       }
     ],

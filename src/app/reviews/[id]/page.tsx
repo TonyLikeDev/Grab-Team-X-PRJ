@@ -75,7 +75,7 @@ export default function ReviewsPage({ params }: { params: Promise<{ id: string }
                   />
                 ))}
               </div>
-              <p className="text-muted-foreground">{activity.reviews} đánh giá</p>
+              <p className="text-muted-foreground">{activity.reviews} reviews</p>
             </div>
 
             <div className="space-y-3">

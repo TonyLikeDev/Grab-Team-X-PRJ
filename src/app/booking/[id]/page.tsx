@@ -95,8 +95,8 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
           {/* Booking Form */}
           <div className="md:col-span-3 space-y-6">
             <Card className="p-8 shadow-xl border-2 hover:border-primary/30 transition-all">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                <CalendarIcon className="w-7 h-7 text-primary" />
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-black">
+                <CalendarIcon className="w-7 h-7 text-black" />
                 Select Date
               </h2>
               <Popover>
@@ -105,7 +105,7 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
                     variant="outline"
                     className="w-full justify-start text-left h-16 text-lg border-2 hover:border-primary hover:bg-primary/5"
                   >
-                    <CalendarIcon className="mr-3 h-6 w-6 text-primary" />
+                    <CalendarIcon className="mr-3 h-6 w-6 text-black" />
                     {date ? format(date, "PPP") : "Choose your departure date"}
                   </Button>
                 </PopoverTrigger>
@@ -122,15 +122,15 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
             </Card>
 
             <Card className="p-8 shadow-xl border-2 hover:border-primary/30 transition-all">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                <Users className="w-7 h-7 text-primary" />
+              <h2 className="text-2xl font-bold mb-6 flex items-center gap-3 text-black">
+                <Users className="w-7 h-7 text-black" />
                 Number of Guests
               </h2>
               <div className="flex items-center justify-between bg-secondary/30 p-6 rounded-xl">
                 <div>
                   <div className="font-bold text-xl">Travelers</div>
                   <div className="text-sm text-muted-foreground mt-1">
-                    ${activity.price.toLocaleString()} per person
+                    {activity.price.toLocaleString()}đ per person
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -143,7 +143,7 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
                   >
                     <Minus className="w-6 h-6" />
                   </Button>
-                  <span className="text-4xl font-bold w-20 text-center text-primary">{guests}</span>
+                  <span className="text-4xl font-bold w-20 text-center text-black">{guests}</span>
                   <Button
                     variant="outline"
                     size="icon"
@@ -161,7 +161,7 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
           {/* Summary Sidebar */}
           <div className="md:col-span-2">
             <Card className="p-6 sticky top-4 shadow-xl border-2 border-primary/20">
-              <h2 className="text-xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h2 className="text-xl font-bold mb-4 text-black">
                 Booking Summary
               </h2>
               
@@ -192,8 +192,8 @@ export default function BookingPage({ params }: { params: Promise<{ id: string }
               <div className="border-t-2 pt-4 mb-6">
                 <div className="flex justify-between items-center">
                   <span className="font-bold text-lg">Total:</span>
-                  <span className="font-bold text-3xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    ${(activity.price * guests).toLocaleString()}
+                  <span className="font-bold text-3xl text-black">
+                    {(activity.price * guests).toLocaleString()}đ
                   </span>
                 </div>
               </div>

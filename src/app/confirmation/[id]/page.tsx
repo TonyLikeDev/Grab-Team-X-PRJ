@@ -73,7 +73,7 @@ export default function ConfirmationPage({ params }: { params: Promise<{ id: str
 
           {/* Booking Details */}
           <Card className="p-8 shadow-xl border-2 border-primary/20">
-            <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <h2 className="text-2xl font-bold mb-6 text-black">
               Trip Details
             </h2>
             
@@ -91,7 +91,7 @@ export default function ConfirmationPage({ params }: { params: Promise<{ id: str
                 <div>
                   <h3 className="font-bold text-2xl mb-2">{bookingData.activityTitle}</h3>
                   <div className="flex items-center gap-2 text-muted-foreground">
-                    <MapPin className="w-4 h-4" />
+                    <MapPin className="w-4 h-4 text-black" />
                     <span>{activity.location}</span>
                   </div>
                 </div>
@@ -118,31 +118,31 @@ export default function ConfirmationPage({ params }: { params: Promise<{ id: str
             </div>
 
             <div className="border-t-2 pt-6">
-              <h3 className="font-bold mb-4 text-xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h3 className="font-bold mb-4 text-xl text-black">
                 Contact Information
               </h3>
               <div className="grid md:grid-cols-3 gap-4">
-                <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
+                  <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <User className="w-6 h-6 text-primary" />
+                    <User className="w-6 h-6 text-black" />
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Name</div>
                     <div className="font-bold text-sm">{bookingData.customerInfo?.name}</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
+                  <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Mail className="w-6 h-6 text-primary" />
+                    <Mail className="w-6 h-6 text-black" />
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Email</div>
                     <div className="font-bold text-sm">{bookingData.customerInfo?.email}</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
+                  <div className="flex items-center gap-3 p-4 bg-secondary/50 rounded-xl">
                   <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                    <Phone className="w-6 h-6 text-primary" />
+                    <Phone className="w-6 h-6 text-black" />
                   </div>
                   <div>
                     <div className="text-xs text-muted-foreground">Phone</div>
@@ -155,7 +155,7 @@ export default function ConfirmationPage({ params }: { params: Promise<{ id: str
 
           {/* Payment Summary */}
           <Card className="p-8 shadow-xl border-2 border-primary/20">
-            <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+            <h2 className="text-2xl font-bold mb-6 text-black">
               Payment Summary
             </h2>
             <div className="space-y-3">
@@ -165,8 +165,8 @@ export default function ConfirmationPage({ params }: { params: Promise<{ id: str
               </div>
               <div className="flex justify-between items-center pt-4 border-t-2 p-4 bg-gradient-to-r from-primary/10 to-accent/10 rounded-xl">
                 <span className="font-bold text-xl">Total Paid:</span>
-                <span className="font-bold text-4xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  ${bookingData.totalPrice.toLocaleString()}
+                <span className="font-bold text-4xl text-black">
+                  {bookingData.totalPrice.toLocaleString()}đ
                 </span>
               </div>
             </div>

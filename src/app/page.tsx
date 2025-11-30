@@ -1,9 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { MapPin, Clock, Star, Search, Compass } from "lucide-react"
+import { MapPin, Clock, Star, Search } from "lucide-react"
 import { activities } from "@/lib/activities-data"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -12,6 +12,26 @@ import { Card } from "@/components/ui/card"
 export default function HomePage() {
   const router = useRouter()
   const [searchTerm, setSearchTerm] = useState("")
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true)
+  const [lastScrollY, setLastScrollY] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY
+      
+      // Show header when scrolling up, hide when scrolling down
+      if (currentScrollY < lastScrollY) {
+        setIsHeaderVisible(true)
+      } else if (currentScrollY > 50) {
+        setIsHeaderVisible(false)
+      }
+      
+      setLastScrollY(currentScrollY)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [lastScrollY])
 
   const filteredActivities = activities.filter(
     (activity) =>
@@ -20,18 +40,24 @@ export default function HomePage() {
   )
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-primary/5 via-accent/5 to-background">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="bg-gradient-to-r from-primary via-accent to-primary/90 shadow-xl sticky top-0 z-50 backdrop-blur-sm">
+      <header className={`bg-gradient-to-r from-[#FEE6B4] via-[#ffbb2e] to-[#FEE6B4] shadow-xl sticky top-0 z-50 backdrop-blur-sm transition-all duration-300 ${
+        isHeaderVisible ? "translate-y-0" : "-translate-y-full"
+      }`}>
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-lg">
-                <Compass className="w-7 h-7 text-primary" />
-              </div>
+              {/* Compass logo removed */}
+              <div className="w-0" />
               <div>
-                <h1 className="text-2xl md:text-3xl font-bold text-white">SEA STORIES</h1>
-                <p className="text-sm text-white/90">Discover Vietnam</p>
+                <Image
+                  src="https://lh3.googleusercontent.com/pw/AP1GczNS7cTzitiX6_q9XSHyRZOlsVxyMwvhYwGpNAvODFrhZwlFqDEAdwJlaaKhnRfdxwkZXraHlNmaFXerfXaFKvFyj3HIeTpF7RhEdzkKmZB6YoAGOupR9aNfIM-kc_KjU3e16Rxksw-i1VRMVo3hPSyX=w1150-h647-s-no-gm?authuser=0"
+                  alt="beLocal logo"
+                  width={150}
+                  height={20}
+                  className="h-auto"
+                />
               </div>
             </div>
           </div>
@@ -52,7 +78,7 @@ export default function HomePage() {
 
       {/* Activities List */}
       <main className="max-w-7xl mx-auto px-4 py-10">
-        <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+        <h2 className="text-3xl font-bold mb-8 text-[#F5A623]">
           Outdoor Adventures
         </h2>
         
@@ -60,7 +86,7 @@ export default function HomePage() {
           {filteredActivities.map((activity) => (
             <Card
               key={activity.id}
-              className="overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer group border-2 hover:border-primary/50"
+              className="overflow-hidden hover:shadow-2xl transition-all duration-300 cursor-pointer group border-2 border-[#FEE6B4] hover:border-[#F5A623]"
               onClick={() => router.push(`/activity/${activity.id}`)}
             >
               <div className="flex gap-4 p-5">
@@ -74,7 +100,7 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-2 left-2 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1 shadow-lg">
-                    <MapPin className="w-3 h-3 text-primary" />
+                    <MapPin className="w-3 h-3 text-[#F5A623]" />
                     {activity.location}
                   </div>
                 </div>
@@ -82,7 +108,7 @@ export default function HomePage() {
                 {/* Content */}
                 <div className="flex-1 flex flex-col justify-between py-1">
                   <div>
-                    <h3 className="font-bold text-lg mb-2 text-foreground line-clamp-1 group-hover:text-primary transition-colors">
+                    <h3 className="font-bold text-lg mb-2 text-foreground line-clamp-1 group-hover:text-[#F5A623] transition-colors">
                       {activity.titleEn}
                     </h3>
                     <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
@@ -103,12 +129,12 @@ export default function HomePage() {
 
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                        ${activity.price.toLocaleString()}
+                      <div className="text-2xl font-bold text-black">
+                        {activity.price.toLocaleString()}đ
                       </div>
                       <div className="text-xs text-muted-foreground">per person</div>
                     </div>
-                    <Button className="bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white shadow-lg">
+                    <Button className="bg-[#F5A623] hover:bg-[#E09515] text-white font-semibold shadow-lg">
                       View Details
                     </Button>
                   </div>

@@ -96,13 +96,13 @@ export default function ReviewBookingPage({ params }: { params: Promise<{ id: st
           {/* Form */}
           <div className="md:col-span-3 space-y-6">
             <Card className="p-8 shadow-xl border-2 hover:border-primary/30 transition-all">
-              <h2 className="text-2xl font-bold mb-6 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Contact Information
-              </h2>
+              <h2 className="text-2xl font-bold mb-6 text-black">
+                  Contact Information
+                </h2>
               <div className="space-y-5">
                 <div>
                   <Label htmlFor="name" className="text-base font-bold flex items-center gap-2">
-                    <User className="w-4 h-4 text-primary" />
+                    <User className="w-4 h-4 text-black" />
                     Full Name *
                   </Label>
                   <Input
@@ -115,7 +115,7 @@ export default function ReviewBookingPage({ params }: { params: Promise<{ id: st
                 </div>
                 <div>
                   <Label htmlFor="email" className="text-base font-bold flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-primary" />
+                    <Mail className="w-4 h-4 text-black" />
                     Email *
                   </Label>
                   <Input
@@ -129,7 +129,7 @@ export default function ReviewBookingPage({ params }: { params: Promise<{ id: st
                 </div>
                 <div>
                   <Label htmlFor="phone" className="text-base font-bold flex items-center gap-2">
-                    <Phone className="w-4 h-4 text-primary" />
+                    <Phone className="w-4 h-4 text-black" />
                     Phone *
                   </Label>
                   <Input
@@ -162,7 +162,7 @@ export default function ReviewBookingPage({ params }: { params: Promise<{ id: st
           {/* Summary */}
           <div className="md:col-span-2">
             <Card className="p-6 sticky top-4 shadow-xl border-2 border-primary/20">
-              <h2 className="text-xl font-bold mb-4 bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              <h2 className="text-xl font-bold mb-4 text-black">
                 Trip Summary
               </h2>
               
@@ -203,14 +203,14 @@ export default function ReviewBookingPage({ params }: { params: Promise<{ id: st
                 </div>
               </div>
 
-              <div className="border-t-2 pt-4 mb-6">
-                <div className="flex justify-between items-center">
-                  <span className="font-bold text-lg">Total:</span>
-                  <span className="font-bold text-3xl bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                    ${bookingData.totalPrice.toLocaleString()}
-                  </span>
+                <div className="border-t-2 pt-4 mb-6">
+                  <div className="flex justify-between items-center">
+                    <span className="font-bold text-lg">Total:</span>
+                    <span className="font-bold text-3xl text-black">
+                      {bookingData.totalPrice.toLocaleString()}đ
+                    </span>
+                  </div>
                 </div>
-              </div>
 
               <Button 
                 className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 text-white h-14 text-lg font-bold shadow-xl"
